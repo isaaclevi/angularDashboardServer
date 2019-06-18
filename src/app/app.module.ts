@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import {
   MatInputModule,
   MatPaginatorModule,
@@ -24,6 +25,11 @@ import { DoughnutCanvComponent } from './doughnut-canv/doughnut-canv.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    data: { title: 'boards'}
+  },
   {
     path: 'users',
     component: UserComponent,
@@ -47,7 +53,7 @@ const appRoutes: Routes = [
   },
   */
   { path: '',
-    redirectTo: '/users',
+    redirectTo: '/dashboard',
     pathMatch: 'full'
   }
 ];

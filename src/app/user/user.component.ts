@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { DataSource } from '@angular/cdk/collections';
-import { Observable } from 'rxjs';
+import { UserDataSource} from './UserDataClass';
+import { Observable, from } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -23,20 +23,5 @@ export class UserComponent implements OnInit {
     }, err => {
       console.log(err);
     });
-  }
-
-}
-
-export class UserDataSource extends DataSource<any> {
-  constructor(private api: ApiService) {
-    super()
-  }
-
-  connect() {
-    return this.api.getUsers();
-  }
-
-  disconnect() {
-
   }
 }

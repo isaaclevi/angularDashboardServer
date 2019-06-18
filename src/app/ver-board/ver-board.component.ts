@@ -1,6 +1,8 @@
+import { UserDataSource } from '../user/UserDataClass';
 import { Component, OnInit } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
 import { Chart } from 'chart.js';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-ver-board',
@@ -8,22 +10,35 @@ import { Chart } from 'chart.js';
   styleUrls: ['./ver-board.component.css']
 })
 export class VerBoardComponent implements OnInit {
-
+  private dataSource = new UserDataSource(this.api);
   //public ChartLabels = ['update','outdate'];
   //public ChartData = [100,150];
   //public doughnutChartType = 'doughnut';
   //public ChartOptions = { responsive: true, };
-  private present = '80';
+  private ver:string;
   private canv;
   private chart;
+  private users:any;
+  private arr:string[];
   //@Output('newPresent') change = new EventEmitter; 
   
 
-  constructor() { }
+  constructor(private api: ApiService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.users = await this.initUsers();
     this.canv = (<HTMLCanvasElement>document.getElementById("doug")).getContext('2d');
     this.chart = this.initChart();
+    console.log(this.users);
+  }
+
+  async initUsers(){
+    return this.api.getUsers().subscribe(res => {
+      console.log(res);
+      return res;
+    }, err => {
+      console.log(err);
+    });
   }
 
   initChart(){
@@ -52,8 +67,16 @@ export class VerBoardComponent implements OnInit {
     console.log("clicked",$event);
   }
 
+  calc(){
+    /*
+    this.arr.push(this.users[0].db_ver)
+    for(var i=0;i<this.users.length;i++){
+      this.users[i].db_ver == 
+    }*/
+  }
+
   onEnter(){
-    console.log(this.present);
+    console.log(this.ver);
   }
 
 }

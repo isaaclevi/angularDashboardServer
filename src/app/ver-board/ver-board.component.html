@@ -2,11 +2,13 @@
   <div class="pod-title">
       <h3 class="h3" style="font-size: 15px; padding-top: 0px;">
       Client Version 
-          <input [(ngModel)]="ver" (keyup.enter)="onEnter()" size="1"/>% 
-          <button class="btn btn-primary" (click)="onClick($event)">
-              Change
-          </button>
       </h3>
+      <div>
+        <input [(ngModel)]="ver" (keyup.enter)="onEnter()" size="10"/> 
+        <button class="btn btn-primary" (click)="onClick($event)">
+            Change
+        </button>
+      </div>
       <div class="pod-content">
           <div class="frame" ng-controller="ClientRam">
               <div>
