@@ -5,7 +5,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 
 const apiRouter = require('./routes/Users');
-const dashRouter = require('./routes/Dashboard');
+//const dashRouter = require('./routes/Dashboard');
 
 const app = express();
 const mongoose = require('mongoose');
@@ -27,7 +27,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist/dashboardServer')));
 app.use('/', express.static(path.join(__dirname, 'dist/dashboardServer')));
 app.use('/api', apiRouter);
-app.use('/dash', dashRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

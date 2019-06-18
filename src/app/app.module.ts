@@ -21,6 +21,7 @@ import {
   MatFormFieldModule } from "@angular/material";
 import { VerBoardComponent } from './ver-board/ver-board.component';
 import { DoughnutCanvComponent } from './doughnut-canv/doughnut-canv.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   {
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
     UserComponent,
     UserDetailComponent,
     VerBoardComponent,
-    DoughnutCanvComponent
+    DoughnutCanvComponent,
+    DashboardComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
