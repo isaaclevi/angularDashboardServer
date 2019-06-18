@@ -1,0 +1,25 @@
+<div class="pod">
+  <div class="pod-title">
+      <h3 class="h3" style="font-size: 15px; padding-top: 0px;">
+      Client Version 
+          <input [(ngModel)]="ver" (keyup.enter)="onEnter()" size="1"/>% 
+          <button class="btn btn-primary" (click)="onClick($event)">
+              Change
+          </button>
+      </h3>
+      <div class="pod-content">
+          <div class="frame" ng-controller="ClientRam">
+              <div>
+                  <title>
+                      Client RAM Usage
+                  </title>
+                  <meta charset="utf-8">
+                  <meta name="viewport" content="width=device-width,initial-scale=1">
+              </div>
+              <div id="root" style="height: 100%">
+                  <app-canvas></app-canvas>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
