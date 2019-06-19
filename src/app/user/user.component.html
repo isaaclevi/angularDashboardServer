@@ -10,13 +10,13 @@
     <!-- Title Column -->
     <ng-container matColumnDef="enterprise">
       <th mat-header-cell *matHeaderCellDef> Enterprise </th>
-      <td mat-cell *matCellDef="let element" class="isbn-col"> {{element.enterprise_name}} </td>
+      <td mat-cell *matCellDef="let element" class="enterprise-col"> {{element.enterprise_name}} </td>
     </ng-container>
 
     <!-- Title Column -->
     <ng-container matColumnDef="store">
       <th mat-header-cell *matHeaderCellDef> Store </th>
-      <td mat-cell *matCellDef="let element"> {{element.store_name}} </td>
+      <td mat-cell *matCellDef="let element" class="store-col"> {{element.store_name}} </td>
     </ng-container>
 
     <!-- Author Column -->

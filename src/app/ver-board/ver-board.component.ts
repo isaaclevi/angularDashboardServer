@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { UserDataSource } from '../user/UserDataClass';
 import { Component, OnInit } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
@@ -9,8 +10,10 @@ import { ApiService } from '../api.service';
   templateUrl: './ver-board.component.html',
   styleUrls: ['./ver-board.component.css']
 })
+
 export class VerBoardComponent implements OnInit {
-  private dataSource = new UserDataSource(this.api);
+  private _displayedColumns = ['enterprise', 'store'];
+  private _dataSource = new UserDataSource(this.api);
   //public ChartLabels = ['update','outdate'];
   //public ChartData = [100,150];
   //public doughnutChartType = 'doughnut';
@@ -18,27 +21,44 @@ export class VerBoardComponent implements OnInit {
   private ver:string;
   private canv;
   private chart;
-  private users:any;
+  private _users:any;
   private arr:string[];
+  
   //@Output('newPresent') change = new EventEmitter; 
   
 
   constructor(private api: ApiService) { }
 
-  async ngOnInit() {
-    this.users = await this.initUsers();
-    this.canv = (<HTMLCanvasElement>document.getElementById("doug")).getContext('2d');
-    this.chart = this.initChart();
-    console.log(this.users);
+  get users(){
+    return this._users;
   }
 
-  async initUsers(){
-    return this.api.getUsers().subscribe(res => {
+  get dataSource(){
+    return this._dataSource;
+  }
+
+  get displayedColumns(){
+    return this._displayedColumns;
+  }
+
+  ngOnInit() {
+    this.canv = (<HTMLCanvasElement>document.getElementById("doug")).getContext('2d');
+    this.chart = this.initChart();
+    this.initUsers();
+    /*while(this.users == null){
+      if(this.users!=null)
+        this.getUsers();
+    }*/
+  }
+
+  initUsers(){
+    this.api.getUsers().subscribe((res) => {
       console.log(res);
-      return res;
+      this._users = res;
     }, err => {
       console.log(err);
     });
+    console.log(document);
   }
 
   initChart(){
@@ -51,8 +71,8 @@ export class VerBoardComponent implements OnInit {
         labels:['update','outdate'],
         datasets:[{
           label:'ramusage',
-          data:[100,150],
-          backgroundColor:['red','blue'],borderWidth:1,
+          data:[0,0],
+          backgroundColor:['blue','red'],borderWidth:1,
           borderColor:'#777',
           hoverBorderWidth:3,
           hoverBorderColor:'#777'
@@ -69,9 +89,9 @@ export class VerBoardComponent implements OnInit {
 
   calc(){
     /*
-    this.arr.push(this.users[0].db_ver)
-    for(var i=0;i<this.users.length;i++){
-      this.users[i].db_ver == 
+    this.arr.push(this._users[0].db_ver)
+    for(var i=1;i<this.users.length;i++){
+      this._users[i].db_ver == 
     }*/
   }
 

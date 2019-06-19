@@ -1,3 +1,47 @@
-<p>
-  user-detail works!
-</p>
+<div class="button-row">
+  <a mat-raised-button color="primary" [routerLink]="['/books']"><mat-icon>list</mat-icon></a>
+</div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title><h2>{{book.title}}</h2></mat-card-title>
+    <mat-card-subtitle>{{book.description}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <dl>
+      <dt>Enterprise:</dt>
+      <dd>{{user.enterprise_name}}</dd>
+      <dt>Store:</dt>
+      <dd>{{User.store_name}}</dd>
+      <dt>Compudash Version:</dt>
+      <dd>{{user.compudash_ver}}</dd>
+      <dt>Last Modified:</dt>
+      <dd>{{user.Modified}</dd>
+      <dt>Last Checked:</dt>
+      <dd>{{user.Checked}}</dd>
+      <dt>DB Version:</dt>
+      <dd>{{user.db_ver}}</dd>
+      <dt>Tis01 Version:</dt>
+      <dd>{{user.Tis01_ver}}</dd>
+      <dt>TisWin3 Version:</dt>
+      <dd>{{user.TisWin3_ver}}</dd>
+      <dt>Tis01 DTOS:</dt>
+      <dd>{{user.Tis01_DTOS}}</dd>
+      <dt>Tis01 Version Date:</dt>
+      <dd>{{user.Tis01_ver_date}}</dd>
+      <dt>Registers:</dt>
+      <dd>{{user.Active_Registers}}</dd>
+      <dt>Tmpcalc Size:</dt>
+      <dd>{{user.Tmpcalc_Size}}</dd>
+      <dt>Public IP:</dt>
+      <dd>{{user.public_ip}}</dd>
+      <dt>CC Engine:</dt>
+      <dd>{{user.CC_Engine}}</dd>
+      <dt>Action:</dt>
+      <dd>{{user.action}}</dd>
+    </dl>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-raised-button color="primary" [routerLink]="['/book-edit', book._id]"><mat-icon>edit</mat-icon></a>
+    <a mat-raised-button color="warn" (click)="deleteBook(book._id)"><mat-icon>delete</mat-icon></a>
+  </mat-card-actions>
+</mat-card>

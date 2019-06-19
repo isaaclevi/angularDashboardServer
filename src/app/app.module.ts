@@ -53,7 +53,7 @@ const appRoutes: Routes = [
   },
   */
   { path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/users',
     pathMatch: 'full'
   }
 ];
@@ -83,7 +83,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatFormFieldModule,
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,15 +13,20 @@ export class UserComponent implements OnInit {
   dataSource = new UserDataSource(this.api);
   constructor(private api: ApiService) { }
 
-  users: any;
+  private _users: any;
 
   ngOnInit() {
     this.api.getUsers()
     .subscribe(res => {
       console.log(res);
-      this.users = res;
+      this._users = res;
     }, err => {
       console.log(err);
     });
+    //console.log();
+  }
+
+  get users(){
+    return this._users;
   }
 }
